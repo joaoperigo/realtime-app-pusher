@@ -13,6 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    // use Notifiable;
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -46,14 +47,15 @@ class User extends Authenticatable
     ];
 
 
+
     /**
-     * User exposed observable events.
+     * The event map for the model.
      *
-     * These are extra user-defined events observers may subscribe to.
+     * Allows for object-based events for native Eloquent events.
      *
      * @var array
      */
-    protected $observables = [
+    protected $dispatchesEvents = [
         'created' => UserCreated::class,
         'updated' => UserUpdated::class,
         'deleted' => UserDeleted::class,
