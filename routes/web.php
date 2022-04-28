@@ -24,3 +24,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::view('/users', 'users.showAll')->name('users.all');
 
 Route::view('/game', 'game.show')->name('game.show');
+
+// Route::get('/chat', 'ChatController@showChat')->name('chat.show');
+Route::get('/chat', 'App\Http\Controllers\ChatController@showChat')->name('chat.show');
+
+Route::post('/chat/message', 'App\Http\Controllers\ChatController@messageReceived')->name('chat.message');
+
+Route::post('/chat/greet/{user}', 'App\Http\Controllers\ChatController@greetReceived')->name('chat.greet');
+
